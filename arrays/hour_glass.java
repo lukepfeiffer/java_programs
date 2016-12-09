@@ -9,7 +9,7 @@ class HourGlass{
     int columns = 4;
     int[][] array = new int[rows][columns];
     int temp_sum = 0;
-    int sum = 0;
+    int sum = Integer.MIN_VALUE;
 
     // set values
     for (int i = 0; i < rows; ++i) {
