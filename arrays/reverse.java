@@ -7,7 +7,6 @@ class ReverseArray{
     int length = 4;
     int values[] = new int[length];
 
-    // populate variable
     for(int i = 0; i < length; ++i) { values[i] = input.nextInt(); }
     for(int i = length - 1; i >= 0; --i) { System.out.print(values[i] + " "); }
   }
