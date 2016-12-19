@@ -3,10 +3,8 @@ import java.io.*;
 
 class HourGlass{
   public static void main(String args[]){
-    System.out.println("Enter 16 numbers");
-    Scanner input = new Scanner(System.in);
-    int rows = 4;
-    int columns = 4;
+    int rows = 6;
+    int columns = 6;
     int[][] array = new int[rows][columns];
     int temp_sum = 0;
     int sum = Integer.MIN_VALUE;
@@ -14,7 +12,7 @@ class HourGlass{
     // set values
     for (int i = 0; i < rows; ++i) {
       for (int j = 0; j < columns; ++j){
-        array[i][j] = input.nextInt();
+        array[i][j] = ((int)(Math.random()*100 + 1));
       }
     }
 
