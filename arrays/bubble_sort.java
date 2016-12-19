@@ -3,17 +3,21 @@ import java.io.*;
 
 class BubbleSort {
   public static void main(String args[]){
-    System.out.println("Enter five numbers");
-    Scanner input = new Scanner(System.in);
-    boolean swapped = true;
-    int j = 0;
-    int length = 5;
     int tmp;
+    int j = 0;
+    int length = 15;
+    boolean swapped = true;
     int[] array = new int[length];
 
+    System.out.print("Original array: ");
+
     for(int i = 0; i < length; ++i){
-      array[i] = input.nextInt();
+      array[i] = ((int)(Math.random()*100 + 1));
+      System.out.print(array[i] + " ");
     }
+
+    System.out.println();
+    System.out.print("Newly sorted array: ");
 
     while (swapped) {
       swapped = false;
