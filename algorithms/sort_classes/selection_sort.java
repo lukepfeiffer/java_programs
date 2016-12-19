@@ -1,14 +1,9 @@
-import java.util.*;
-import java.io.*;
+class SelectionSort{
 
-class InsertionSort{
-
-  // Descending Sort!!!
+  // Descending Order!
 
   public static void main(String args[]){
-    int key;
-    int j;
-    int i;
+    int i, j, first, temp;
     int length = 15;
     int[] array = new int[length];
 
@@ -19,13 +14,18 @@ class InsertionSort{
       System.out.print(array[i] + " ");
     }
 
-    for (j = 1; j < length; ++j) {
-      key = array[j];
+    for (i = length - 1; i > 0; --i) {
+    first = 0;
 
-      for(i = j - 1; (i >= 0) && (array[i] < key); --i) {
-        array[i+1] = array[i];
+      for(j = 1; j <= i; ++j) {
+        if(array[j] < array[first] ) {
+          first = j;
+        }
+        temp = array[first];
+        array[first] = array[i];
+        array[i] = temp;
       }
-      array[i+1] = key;
+
     }
 
     System.out.println();
@@ -34,5 +34,6 @@ class InsertionSort{
     for(i = 0; i < length; ++i){
       System.out.print(array[i] + " ");
     }
+
   }
 }
