@@ -1,4 +1,5 @@
 import java.util.*;
+
 class LinkedList{
 
   private Node head = null;
@@ -71,6 +72,7 @@ class LinkedList{
 
     myList.append(input.nextInt());
     myList.print();
+
     System.out.println("");
   }
 }
