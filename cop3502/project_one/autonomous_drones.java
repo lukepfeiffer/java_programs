@@ -66,11 +66,11 @@ class AutonomousDrones {
     */
 
     if (threeDimensionalDistance < 1) {
-      System.out.println("The drones are " + threeDimensionalDistance + " feet apart in altitude. They need to move farther apart in altitude.");
+      System.out.println("The drones are " + threeDimensionalDistance + " feet apart in 3D space. They need to move farther apart.");
     } else if (threeDimensionalDistance > 500) {
-      System.out.println("The drones are " + threeDimensionalDistance + " feet apart in altitude. They need to move closer together in altitude.");
+      System.out.println("The drones are " + threeDimensionalDistance + " feet apart in 3D space. They need to move closer together.");
     } else {
-      System.out.println("The drones are " + threeDimensionalDistance + " feet apart in altitude. They do not need to move farther apart or closer in altitude.");
+      System.out.println("The drones are " + threeDimensionalDistance + " feet apart in 3D space. They do not need to move farther apart or closer.");
     }
   }
 }
