@@ -3,6 +3,7 @@ import java.util.Scanner;
 /*
   Name: Luke Pfeiffer
   ID: 4363-4185
+  Section Number: 128H
   This is a program that ensures that drones equipped with cameras are not to close to one another.
   These drones are used to catch cats and dogs by surveying the neighborhood!
   This is to ensure they do not collide as well as make sure that their camera coverage does not overlap too much.
