@@ -134,7 +134,9 @@ public class LucyTattooParlor{
     // Because unfilled slots for the array are filled with null, check to make sure
     // that is no added to the sum variable.
     for(int i = 0; i < a.length; ++i){
-      if(a[i] != null){
+      if(a[i] == null){
+        break;
+      } else {
         numMinutes += a[i].getMinutes();
       }
     }
@@ -160,14 +162,15 @@ public class LucyTattooParlor{
     // Check if adding this new customer to the list will go over 8 hours one time
     // rather than checking a bunch inside the for loop.
 
-    boolean lessThan8Hours = computeMinutesOfWork(a[artistNum]) <= 480;
+    boolean lessThan8Hours = (computeMinutesOfWork(a[artistNum]) + c.getMinutes()) <= 480;
 
     for(int i = 0; i < a[artistNum].length; ++i){
+      // Check if the function is "addable" meaning if this artists row has time for 
       boolean isAddable = a[artistNum][i] == null && lessThan8Hours;
       if(isAddable){
-        returnFlag = true;
         a[artistNum][i] = c;
-        System.out.println(a[artistNum][i] + " " + c.getMinutes());
+        returnFlag = true;
+        break;
       }
     }
 
