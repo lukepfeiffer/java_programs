@@ -20,6 +20,8 @@ public class LucyTattooParlor{
 
     // Populate two dim. array of customers per artist.
     TattooCustomer[][] customers = populateCustomers(numArtists, customerPerArtist, scan);
+    print(customers);
+    System.out.println("The program is done!");
   }
 
   public static TattooCustomer[][] populateCustomers(int numArtists, int customerPerArtist, Scanner scan){
@@ -40,6 +42,14 @@ public class LucyTattooParlor{
 
       System.out.println("Customer's tattoo: ");
       String tattoo = scan.next();
+
+      // This is kind of hacky. Because print waitlist is two words,
+      // use scanner.nextLine would grab the wrong elements sometimes.
+      // This is to ensure that I get the correct name here
+      if((name + " " + tattoo).equalsIgnoreCase("Print Waitlist")){
+        break;
+      }
+
 
       System.out.println("Time estimate (minutes): ");
       int minutes = scan.nextInt();
@@ -127,6 +137,7 @@ public class LucyTattooParlor{
    * @param The array of customers for one particular tattoo artist.
    * @return number of minutes for the customer's wait.
    */
+
   public static int computeMinutesOfWork(TattooCustomer [] a) {
     int numMinutes = 0;
 
@@ -144,6 +155,21 @@ public class LucyTattooParlor{
     return numMinutes;
   }
 
+  public static void print(TattooCustomer[][] customers){
+    System.out.println("Here is the list:");
+    int row = customers.length;
+    // Because all sub arrays are the same length, set the col number here!
+    int col = customers[0].length;
+    for(int i = 0; i < row; ++i){
+      for(int j = 0; j < col; ++j){
+        TattooCustomer customer = customers[i][j];
+        if(customer != null){
+          System.out.print(customer.getName() + " " + customer.getTattoo() + " " + customer.getMinutes() + " ");
+        }
+      }
+      System.out.println();
+    }
+  }
 
   /**
    * Note* Overload of the addCustomer method if a customer wants a specific artist.
@@ -221,6 +247,11 @@ public class LucyTattooParlor{
     return returnFlag;
   }
 
+  /**
+   * This method returns the array of the artist's line with the shortest wait.
+   * @author Luke Pfeiffer
+   * @params TattooCustomer[][]
+   */
   public static TattooCustomer[] minimumWait(TattooCustomer[][] customers){
     // Initialize variables. Min index is the index of the artist array the method will return.
     // standingMin is set to such a large number to ensure it gets overwritten.
