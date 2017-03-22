@@ -25,7 +25,7 @@ public class LucyTattooParlor{
   public static TattooCustomer[][] populateCustomers(int numArtists, int customerPerArtist, Scanner scan){
     int maxMinutes = 480; // Equilivent to 8 hours
 
-    // I would have just named the args for this method row and column but
+    // I would've just named the args for this method row and column but
     // I feel like this approach improves readability for future use.
     int row = numArtists;
     int col = customerPerArtist;
@@ -165,9 +165,14 @@ public class LucyTattooParlor{
     boolean lessThan8Hours = (computeMinutesOfWork(a[artistNum]) + c.getMinutes()) <= 480;
 
     for(int i = 0; i < a[artistNum].length; ++i){
+
       // Check if the function is "addable" meaning if this artists row has time for 
+      // the addition of this customer.
+
       boolean isAddable = a[artistNum][i] == null && lessThan8Hours;
       if(isAddable){
+        // If there is a spot open, add the customer to the two d array
+        // and break out of the for loop to prevent overwriting data.
         a[artistNum][i] = c;
         returnFlag = true;
         break;
@@ -175,8 +180,7 @@ public class LucyTattooParlor{
     }
 
     return returnFlag;
-  }
-
+  } 
   /**
    * Note* Overload of the addCustomer method if a customer wants a specific artist.
    * Adds customer to the shortest waitlist in terms of minutes. If some artists have equal length waitlists
@@ -186,6 +190,58 @@ public class LucyTattooParlor{
    * @return true if the customer was added to the waitlist, false otherwise (if all artists were full)
   */
   public static boolean addCustomer(TattooCustomer [][] a, TattooCustomer c) {
-    return false;
+    boolean returnFlag = false;
+    int maxMinutes = 480; // 8 hours
+
+    // This method  will return the array of the list with the shortest wait time.
+    // Because we check if there is a space open above (null check), we do not need to check again.
+
+    TattooCustomer [] shortestLine = minimumWait(a);
+    // Check if the line the customer wants to go to would have a wait over 8 hours with the 
+    // addition of this customer.
+
+    boolean lessThan8Hours = (computeMinutesOfWork(shortestLine) + c.getMinutes()) <= 480;
+
+    for(int i = 0; i < shortestLine.length; ++i){
+
+      // Check if the function is "addable" meaning if this artists row has time for 
+      // The addition of this customer.
+
+
+      boolean isAddable = shortestLine[i] == null && lessThan8Hours;
+      if(isAddable){
+        // If there is a spot open, add the customer to the two d array
+        // and break out of the for loop to prevent overwriting data.
+        shortestLine[i] = c;
+        returnFlag = true;
+        break;
+      }
+    }
+
+    return returnFlag;
+  }
+
+  public static TattooCustomer[] minimumWait(TattooCustomer[][] customers){
+    // Initialize variables. Min index is the index of the artist array the method will return.
+    // standingMin is set to such a large number to ensure it gets overwritten.
+    int minIndex = 0;
+    int standingMin = Integer.MAX_VALUE;
+    int length = customers.length;
+    int [] waitTimes = new int[length];
+
+    // currentMin is the wait time of the customers[][] at the index of the loop.
+    // If currentMin is less than the standingMin (the last minimum value of the array)
+    // then standingMin becomes currentMin and the minIndex is updated to the current
+    // looping index.
+
+    for(int i = 0; i < length; ++i){
+      int currentMin = computeMinutesOfWork(customers[i]);
+
+      if(currentMin < standingMin){
+        standingMin = currentMin;
+        minIndex = i;
+      }
+    }
+    return customers[minIndex];
   }
 }
