@@ -1,8 +1,8 @@
 public class TattooCustomer{
 
-  String name;
-  String tattoo;
-  int minutes;
+  private String name;
+  private String tattoo;
+  private int minutes;
   /**
    *  Constructor for the Tattoo Customer
    *  @params String name, String tattoo, int minutes
