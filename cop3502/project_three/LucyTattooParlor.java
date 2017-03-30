@@ -51,11 +51,11 @@ public class LucyTattooParlor{
       }
 
 
-      System.out.println("Time estimate (minutes): ");
-      int minutes = scan.nextInt();
-
       System.out.println("Would this customer like a specific artist? (yes or no)");
       String response = scan.next();
+
+      System.out.println("Time estimate (minutes): ");
+      int minutes = scan.nextInt();
 
       TattooCustomer customer = new TattooCustomer(name, tattoo, minutes);
       // If the customer wants a specific artist, run method to do so
@@ -85,8 +85,6 @@ public class LucyTattooParlor{
         }
       }
     }
-
-    System.out.println("No more availible spots!");
 
     return customers;
   }
@@ -155,12 +153,19 @@ public class LucyTattooParlor{
     return numMinutes;
   }
 
+  /** Prints out the wait list of customers
+   *  @param TattooCustomer[][]
+   *  @return void
+   */
+
   public static void print(TattooCustomer[][] customers){
     System.out.println("Here is the list:");
     int row = customers.length;
-    // Because all sub arrays are the same length, set the col number here!
-    int col = customers[0].length;
+
     for(int i = 0; i < row; ++i){
+      // Set column number length for every iteration
+      int col = customers[i].length;
+
       for(int j = 0; j < col; ++j){
         TattooCustomer customer = customers[i][j];
         if(customer != null){
@@ -226,7 +231,7 @@ public class LucyTattooParlor{
     // Check if the line the customer wants to go to would have a wait over 8 hours with the 
     // addition of this customer.
 
-    boolean lessThan8Hours = (computeMinutesOfWork(shortestLine) + c.getMinutes()) <= 480;
+    boolean lessThan8Hours = (computeMinutesOfWork(shortestLine) + c.getMinutes()) <= maxMinutes;
 
     for(int i = 0; i < shortestLine.length; ++i){
 
