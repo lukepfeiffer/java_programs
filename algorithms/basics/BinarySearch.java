@@ -1,13 +1,14 @@
 import java.util.*;
 import java.io.*;
-public class BinarySearchTree{
+
+public class BinarySearch{
   public static void main(String args[]){
 
     boolean flag = true;
     int randomInt = (int) (Math.random() * 300 + 1);
     int [] array = new int[300];
     int max = 300;
-    int min = 0;
+    int min = 1;
     int numGuesses = 0;
 
     for(int i = 0; i < array.length; ++i){
